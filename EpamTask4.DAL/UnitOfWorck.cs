@@ -1,9 +1,8 @@
-﻿namespace Entity
+﻿namespace EpamTask4.DAL
 {
     using System;
     using System.Data.Entity;
-
-    using Entity.Repository;
+    using EpamTask4.DAL.Repository;
 
     public class UnitOfWorck<T> : IDisposable where T : class
     {
@@ -49,7 +48,7 @@
 
         public void Dispose()
         {
-            Dispose(true);
+            this.Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

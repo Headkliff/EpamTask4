@@ -9,9 +9,7 @@
 
 namespace Entity
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class Order
     {
         public int Id { get; set; }

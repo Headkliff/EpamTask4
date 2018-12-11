@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Entity.Repository
+﻿namespace EpamTask4.DAL.Repository
 {
+    using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
 
     public class GenericRepository<T> : IGenericRepository<T> where T : class
@@ -65,7 +63,7 @@ namespace Entity.Repository
 
         public void Dispose()
         {
-            Dispose(true);
+            this.Dispose(true);
             GC.SuppressFinalize(this);
         }
     }

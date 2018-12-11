@@ -1,4 +1,4 @@
-﻿namespace Entity.Repository
+﻿namespace EpamTask4.DAL.Repository
 {
     using System;
     using System.Collections.Generic;
