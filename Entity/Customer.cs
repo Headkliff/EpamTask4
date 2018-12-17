@@ -12,15 +12,15 @@ namespace Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public Customer()
         {
             this.Orders = new HashSet<Order>();
         }
     
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     

@@ -3,31 +3,23 @@ using System.IO;
 
 namespace EpamTask4
 {
+    using EpamTask4.BL;
+
     class Program
     {
-        private static FileSystemWatcher watcher;
-
         public static void Main()
         {
-            string path = @"Files";
-            string type = "*.csv";
-            MonitorDirectory(path: path, type: type);
+            MonitorDirectory();
         }
 
-        private static void MonitorDirectory(string path, string type)
+        private static void MonitorDirectory()
         {
-            watcher = new FileSystemWatcher(path: path, filter: type);
-            
-            watcher.Created += OnChanged;
-            watcher.EnableRaisingEvents = true;
+            var unity = new Unity();
 
             Console.WriteLine("Press \'q\' to quit the sample.");
-            while (Console.Read() != 'q') ;
-        }
-
-        private static void OnChanged(object sender, FileSystemEventArgs e)
-        {
-                        
+            while (Console.Read() != 'q')
+            {
+            }
         }
     }
 }

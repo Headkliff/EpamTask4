@@ -28,7 +28,7 @@ namespace Entity
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<File> Files { get; set; }
     }
 }

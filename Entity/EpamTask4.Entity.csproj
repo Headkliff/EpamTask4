@@ -41,7 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs">
+    <Compile Include="Customer.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="DB.Context.cs">

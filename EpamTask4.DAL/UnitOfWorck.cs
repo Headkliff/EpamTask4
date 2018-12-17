@@ -2,36 +2,41 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Linq.Expressions;
+
     using EpamTask4.DAL.Repository;
 
-    public class UnitOfWorck<T> : IDisposable where T : class
+    public abstract class UnitOfWorck<T, TEntity> : IDisposable where T : class where TEntity : class
     {
-        private DbContext context;
-        private IGenericRepository<T> repository;
+        private readonly DbContext context;
+        protected IRepositoryFactory repositoryFactory;
+
+        protected abstract Func<T, TEntity> ToEntity { get; }
+        protected abstract Func<TEntity, T> ToModel { get; }
+
         private bool disposed = false;
 
-        public UnitOfWorck(DbContext context)
+        public UnitOfWorck(DbContext context, IRepositoryFactory factory)
         {
             this.context = context;
-            context.Set<T>();
+            this.repositoryFactory = factory;
         }
 
-        public IGenericRepository<T> Repository
+        public TEntity TryAdd(T modelElement, Expression<Func<T, bool>> searchExpression)
         {
-            get
+            TEntity newEntityElement = null;
+
+            try
             {
-                if (this.repository == null)
-                {
-                    this.repository = new GenericRepository<T>(this.context);
-                }
 
-                return this.repository;
             }
-        }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-        public void Save()
-        {
-            this.context.SaveChanges();
+            return newEntityElement;
         }
 
         public virtual void Dispose(bool disposing)

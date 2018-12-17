@@ -4,120 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="DBStoreContainer">
-    <EntitySet Name="Managers" EntityType="DB.Store.Managers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Orders" EntityType="DB.Store.Orders" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Items" EntityType="DB.Store.Items" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Clients" EntityType="DB.Store.Clients" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Files" EntityType="DB.Store.Files" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ManagerData" Association="DB.Store.ManagerData">
-      <End Role="Manager" EntitySet="Managers" />
-      <End Role="Data" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="ClientOrder" Association="DB.Store.ClientOrder">
-      <End Role="Client" EntitySet="Clients" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="ItemOrder" Association="DB.Store.ItemOrder">
-      <End Role="Item" EntitySet="Items" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FileManager" Association="DB.Store.FileManager">
-      <End Role="File" EntitySet="Files" />
-      <End Role="Manager" EntitySet="Managers" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Managers">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SecondName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Orders">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Manager_Id" Type="int" Nullable="false" />
-    <Property Name="Client_Id" Type="int" Nullable="false" />
-    <Property Name="Item_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Items">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Clients">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Files">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Manager_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="ManagerData">
-    <End Role="Manager" Type="DB.Store.Managers" Multiplicity="1" />
-    <End Role="Data" Type="DB.Store.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Manager">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Data">
-        <PropertyRef Name="Manager_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ClientOrder">
-    <End Role="Client" Type="DB.Store.Clients" Multiplicity="1" />
-    <End Role="Order" Type="DB.Store.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Client">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Client_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ItemOrder">
-    <End Role="Item" Type="DB.Store.Items" Multiplicity="1" />
-    <End Role="Order" Type="DB.Store.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Item">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="Item_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FileManager">
-    <End Role="File" Type="DB.Store.Files" Multiplicity="*" />
-    <End Role="Manager" Type="DB.Store.Managers" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Manager">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="File">
-        <PropertyRef Name="Manager_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="DB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DBStoreContainer" />
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -129,9 +18,9 @@
             <End Role="Data" EntitySet="Orders" />
           </AssociationSet>
           <EntitySet Name="Items" EntityType="DB.Item" />
-          <EntitySet Name="Clients" EntityType="DB.Client" />
+          <EntitySet Name="Customers" EntityType="DB.Customer" />
           <AssociationSet Name="ClientOrder" Association="DB.ClientOrder">
-            <End Role="Client" EntitySet="Clients" />
+            <End Role="Client" EntitySet="Customers" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="ItemOrder" Association="DB.ItemOrder">
@@ -148,20 +37,20 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Order" Relationship="DB.ManagerData" FromRole="Manager" ToRole="Data" />
-          <Property Name="SecondName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
           <NavigationProperty Name="File" Relationship="DB.FileManager" FromRole="Manager" ToRole="File" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Manager" Relationship="DB.ManagerData" FromRole="Data" ToRole="Manager" />
-          <NavigationProperty Name="Client" Relationship="DB.ClientOrder" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Customer" Relationship="DB.ClientOrder" FromRole="Order" ToRole="Client" />
           <NavigationProperty Name="Item" Relationship="DB.ItemOrder" FromRole="Order" ToRole="Item" />
-          <Property Name="Data" Type="String" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="ManagerData">
           <End Type="DB.Manager" Role="Manager" Multiplicity="1" />
@@ -171,21 +60,21 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Orders" Relationship="DB.ItemOrder" FromRole="Item" ToRole="Order" />
           <Property Name="Name" Type="String" Nullable="false" />
         </EntityType>
-        <EntityType Name="Client">
+        <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Orders" Relationship="DB.ClientOrder" FromRole="Client" ToRole="Order" />
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="ClientOrder">
-          <End Type="DB.Client" Role="Client" Multiplicity="1" />
+          <End Type="DB.Customer" Role="Client" Multiplicity="1" />
           <End Type="DB.Order" Role="Order" Multiplicity="*" />
         </Association>
         <Association Name="ItemOrder">
@@ -196,13 +85,13 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FileName" Type="String" Nullable="false" />
-          <Property Name="Data" Type="String" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Manager" Relationship="DB.FileManager" FromRole="File" ToRole="Manager" />
         </EntityType>
         <Association Name="FileManager">
-          <End Type="DB.File" Role="File" Multiplicity="1" />
+          <End Type="DB.File" Role="File" Multiplicity="*" />
           <End Type="DB.Manager" Role="Manager" Multiplicity="1" />
         </Association>
       </Schema>
@@ -211,81 +100,7 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBStoreContainer" CdmEntityContainer="DBContainer">
-    <EntitySetMapping Name="Managers">
-      <EntityTypeMapping TypeName="IsTypeOf(DB.Manager)">
-        <MappingFragment StoreEntitySet="Managers">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="IsTypeOf(DB.Order)">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Data" ColumnName="Data" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Items">
-      <EntityTypeMapping TypeName="IsTypeOf(DB.Item)">
-        <MappingFragment StoreEntitySet="Items">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Clients">
-      <EntityTypeMapping TypeName="IsTypeOf(DB.Client)">
-        <MappingFragment StoreEntitySet="Clients">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Files">
-      <EntityTypeMapping TypeName="IsTypeOf(DB.File)">
-        <MappingFragment StoreEntitySet="Files">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="Data" ColumnName="Data" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="ManagerData" TypeName="DB.ManagerData" StoreEntitySet="Orders">
-      <EndProperty Name="Manager">
-        <ScalarProperty Name="Id" ColumnName="Manager_Id" />
-      </EndProperty>
-      <EndProperty Name="Data">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ClientOrder" TypeName="DB.ClientOrder" StoreEntitySet="Orders">
-      <EndProperty Name="Client">
-        <ScalarProperty Name="Id" ColumnName="Client_Id" />
-      </EndProperty>
-      <EndProperty Name="Order">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ItemOrder" TypeName="DB.ItemOrder" StoreEntitySet="Orders">
-      <EndProperty Name="Item">
-        <ScalarProperty Name="Id" ColumnName="Item_Id" />
-      </EndProperty>
-      <EndProperty Name="Order">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FileManager" TypeName="DB.FileManager" StoreEntitySet="Files">
-      <EndProperty Name="Manager">
-        <ScalarProperty Name="Id" ColumnName="Manager_Id" />
-      </EndProperty>
-      <EndProperty Name="File">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
+    </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -9,14 +9,16 @@
 
 namespace Entity
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Order
     {
-        public int Id { get; set; }
-        public string Data { get; set; }
+        public System.Guid Id { get; set; }
+        public System.DateTime Data { get; set; }
     
         public virtual Manager Manager { get; set; }
-        public virtual Client Client { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual Item Item { get; set; }
     }
 }

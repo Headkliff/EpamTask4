@@ -14,9 +14,9 @@ namespace Entity
     
     public partial class File
     {
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public string FileName { get; set; }
-        public string Data { get; set; }
+        public System.DateTime Data { get; set; }
     
         public virtual Manager Manager { get; set; }
     }
