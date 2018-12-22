@@ -2,13 +2,16 @@
 
 namespace EpamTask4.BL
 {
+    using System.Threading.Tasks;
+
+    using EpamTask4.BL.Tools;
     using EpamTask4.BL.Tools.Reader;
 
     public class Unity
     {
         private FileSystemWatcher watcher;
-        private string path = @"Files";
-        private const string type = "*.csv";
+        private readonly string path = @"Files";
+        private const string Type = "*.csv";
 
         public Unity()
         {
@@ -20,8 +23,8 @@ namespace EpamTask4.BL
 
             watcher = new FileSystemWatcher
                            {
-                               Path = this.path,
-                               Filter = type,
+                               Path = path,
+                               Filter = Type,
                            };
 
             watcher.Created += OnChanged;
@@ -31,7 +34,14 @@ namespace EpamTask4.BL
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
             var reader = new Reader();
-            var data = reader.Read(e.FullPath);
+            var dbwriter = new DbWriter();
+            Task.Factory.StartNew(
+                async () =>
+                    {
+                        var records = reader.Read(e.FullPath);
+                        await dbwriter.Write(records);
+                    });
+            
         }
     }
 }

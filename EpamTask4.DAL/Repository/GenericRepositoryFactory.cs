@@ -10,7 +10,7 @@ namespace EpamTask4.DAL.Repository
 
     public class GenericRepositoryFactory : IRepositoryFactory
     {
-        public IGenericRepository<T> CreateInstance<T>(DbContext context) where T : class
+        public IGenericRepository<T> CreateRepository<T>(DbContext context) where T : class
         {
             return new GenericRepository<T>(context);
         }

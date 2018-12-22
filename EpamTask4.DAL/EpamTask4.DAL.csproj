@@ -46,7 +46,6 @@
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IRepositoryFactory.cs" />
-    <Compile Include="UnitOfWorck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

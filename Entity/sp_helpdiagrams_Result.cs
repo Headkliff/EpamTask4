@@ -10,15 +10,13 @@
 namespace Entity
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Order
+    public partial class sp_helpdiagrams_Result
     {
-        public System.Guid Id { get; set; }
-        public System.DateTime Data { get; set; }
-        public int Cost { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Item Item { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

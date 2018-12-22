@@ -17,7 +17,5 @@ namespace Entity
         public System.Guid Id { get; set; }
         public string FileName { get; set; }
         public System.DateTime Data { get; set; }
-    
-        public virtual Manager Manager { get; set; }
     }
 }

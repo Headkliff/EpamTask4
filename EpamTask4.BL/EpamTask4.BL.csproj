@@ -34,7 +34,14 @@
     <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.12.0.1\lib\net45\CsvHelper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
@@ -44,17 +51,26 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\DBWriter.cs" />
     <Compile Include="Tools\Reader\Reader.cs" />
     <Compile Include="Unity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UnitOfWorcks\" />
+    <ProjectReference Include="..\Entity\EpamTask4.Entity.csproj">
+      <Project>{8efaa368-2b55-4011-9e25-614fc69be31b}</Project>
+      <Name>EpamTask4.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpamTask4.DAL\EpamTask4.DAL.csproj">
+      <Project>{C53935C3-B2A5-4092-B0DF-C0A8B29D8125}</Project>
+      <Name>EpamTask4.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

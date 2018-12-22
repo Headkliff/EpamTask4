@@ -27,27 +27,27 @@
             return this.dbSet.AsNoTracking().Where(predicate).ToList();
         }
 
-        public T FindById(int id)
+        public T Find(T item)
         {
-            return this.dbSet.Find(id);
+            return this.dbSet.Find(item);
         }
 
         public void Create(T item)
         {
             this.dbSet.Add(item);
-            this.context.SaveChanges();
+            this.context.SaveChangesAsync();
         }
 
         public void Update(T item)
         {
             this.context.Entry(item).State = EntityState.Modified;
-            this.context.SaveChanges();
+            this.context.SaveChangesAsync();
         }
 
         public void Remove(T item)
         {
             this.dbSet.Remove(item);
-            this.context.SaveChanges();
+            this.context.SaveChangesAsync();
         }
 
         public virtual void Dispose(bool disposing)

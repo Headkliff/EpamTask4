@@ -5,15 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ee850b4bef484957aa31f5406b928d3f" Name="Diagram1" >
-        <EntityTypeShape EntityType="DB.Manager" Width="1.5" PointX="2.25" PointY="1" />
-        <EntityTypeShape EntityType="DB.Order" Width="1.5" PointX="6.625" PointY="0.875" />
-        <AssociationConnector Association="DB.ManagerData" />
-        <EntityTypeShape EntityType="DB.Item" Width="1.5" PointX="8.75" PointY="0.875" />
-        <EntityTypeShape EntityType="DB.Customer" Width="1.5" PointX="6.5" PointY="4.375" />
+        <EntityTypeShape EntityType="DB.Order" Width="1.5" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DB.Item" Width="1.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DB.Customer" Width="1.5" PointX="3" PointY="3.25" />
         <AssociationConnector Association="DB.ClientOrder" />
         <AssociationConnector Association="DB.ItemOrder" />
-        <EntityTypeShape EntityType="DB.File" Width="1.5" PointX="2.125" PointY="4" />
-        <AssociationConnector Association="DB.FileManager" />
+        <EntityTypeShape EntityType="DB.File" Width="1.5" PointX="0.5" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
